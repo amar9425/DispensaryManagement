@@ -4,6 +4,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
+const API = import.meta.env.VITE_BACKEND_URL;
+
 const ManageEvent=(props)=> {
     const[title,setTitle]=useState("");
     const [data,setData] = useState([]);
