@@ -7,7 +7,7 @@ const Facility = (props) => {
 
    const fetchData = async()=>{
       props.showLoader()
-      await axios.get('http://localhost:4000/api/facility/get').then((response)=>{
+      await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/facility/get`,{ withCredentials: true }).then((response)=>{
          console.log(response)
          setData(response.data.facility);
       }).catch(err=>{

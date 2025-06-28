@@ -9,6 +9,8 @@ import FacilityModal from './FacilityModal/facilityModal';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
+const API = import.meta.env.VITE_BACKEND_URL;
+
 const Facilitye = (props) => {
     const [modal,setModal] = useState(false);
     const [data,setData] = useState([]);
@@ -22,7 +24,7 @@ const Facilitye = (props) => {
     }
     const fetchData = async () => {
         props.showLoader();
-        await axios.get('http://localhost:4000/api/facility/get').then((response) => {
+        await axios.get(`${API}/api/facility/get`,{withCredentials:true}).then((response) => {
             setData(response.data.facility);
         }).catch(err => {
             toast.error(err?.response?.data?.error);
@@ -49,7 +51,7 @@ const Facilitye = (props) => {
     }
     const handleDelete = async (id) => {
         props.showLoader();
-        await axios.delete(`http://localhost:4000/api/facility/delete/${id}`,{withCredentials:true}).then((response) => {
+        await axios.delete(`${API}/api/facility/delete/${id}`,{withCredentials:true}).then((response) => {
             filterOutData(id);
             // toast.success(response.data.message);
             // fetchData();

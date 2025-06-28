@@ -3,6 +3,9 @@ import './stock.css'
 import SearchBox from '../../components/SearchBox/searchBox';
 import TableComp from '../../components/Table/tableComp';
 import axios from 'axios';
+
+const API = import.meta.env.VITE_BACKEND_URL;
+
 const Stock= (props) => {
     const[medicineName,setMedicineName]=useState("");
     const [stocks,setStocks] = useState([]);
@@ -27,7 +30,7 @@ const Stock= (props) => {
 
     const fetchData = async()=>{
       props.showLoader()
-      await axios.get(`http://localhost:4000/api/medicine/search-by-name?name=${medicineName}` ).then((response)=>{
+      await axios.get(`${API}/api/medicine/search-by-name?name=${medicineName}`,{withCredentials: true} ).then((response)=>{
     
 
         if(response.data.medicines.length === 0){

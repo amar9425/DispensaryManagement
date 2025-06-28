@@ -3,6 +3,9 @@ import './login.css'
 import {toast,ToastContainer} from 'react-toastify'
 import { useNavigate } from 'react-router-dom';
 import axios from'axios';
+
+const API = import.meta.env.VITE_BACKEND_URL;
+
 import ForgotModal from '../../components/ForgotModal/forgotModal';
 const Login= (props) => {
 
@@ -33,7 +36,7 @@ const Login= (props) => {
         if(loginField.email.trim()===""|| loginField.password.trim()==="")  return toast.error("Please enter the credentials");
         props.showLoader();
 
-        await axios.post('http://localhost:4000/api/auth/login',loginField,{withCredentials:true}).then((response)=>{
+        await axios.post(`${API}/api/auth/login`,loginField,{withCredentials:true}).then((response)=>{
             console.log(response)
             localStorage.setItem('token',response.data.token);
             localStorage.setItem('userInfo',JSON.stringify(response.data.user));
@@ -61,7 +64,7 @@ const Login= (props) => {
         if(registerField.email.trim() === "" || registerField.password.trim() ==="" || registerField.name.trim() === "") return toast.error("Please enter the Credentials");
         if(registerField.name.length<3) return toast.error("Name should be greater than 2 character")
         props.showLoader();
-        await axios.post('http://localhost:4000/api/auth/register',registerField).then(response =>{
+        await axios.post(`${API}/api/auth/register`,registerField,{ withCredentials: true }).then(response =>{
             toast.success("User Registered Successfully")
 
         }).catch(err=>{

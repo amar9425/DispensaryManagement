@@ -9,6 +9,8 @@ import NearByModal from './NearByModal/nearByModal';
 import { ToastContainer,toast } from 'react-toastify';
 import axios from 'axios';
 
+const API = import.meta.env.VITE_BACKEND_URL;
+
 const NearByHospital = (props) => {
     const [modal, setModal] = useState(false);
     const [data, setData] = useState([]);
@@ -22,7 +24,7 @@ const NearByHospital = (props) => {
     };
     const fetchData = async () => {
         props.showLoader();
-        await axios.get('http://localhost:4000/api/hospital/get').then(response => {
+        await axios.get(`${API}/api/hospital/get`,{ withCredentials: true }).then(response => {
             console.log(response);
             setData(response.data.hospitals);
             
@@ -48,7 +50,7 @@ const NearByHospital = (props) => {
     }
     const handleDelete = async (id) => {
         props.showLoader();
-        await axios.delete(`http://localhost:4000/api/hospital/delete/${id}`, { withCredentials: true }).then(response => {
+        await axios.delete(`${API}/api/hospital/delete/${id}`, { withCredentials: true }).then(response => {
             filterOutData(id);
         }).catch(err => {
             toast.error(err?.response?.data?.error);

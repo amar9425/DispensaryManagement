@@ -12,6 +12,7 @@ import axios from 'axios';
 import { ToastContainer,toast } from 'react-toastify';
 import StudentAllFiles from './StudentAllDetails/studentAllFiles';
 
+const API = import.meta.env.VITE_BACKEND_URL;
 
 const Records = (props) => {
   const [studentRoll, setStudentRoll] = useState('');
@@ -58,7 +59,7 @@ const Records = (props) => {
 
   const fetchData = async () => {
     props.showLoader();
-    await axios.get(`http://localhost:4000/api/history/get-history?month=${selectedMonth}&year=${selectedYear}`,{withCredentials:true}).then(response=>{
+    await axios.get(`${API}/api/history/get-history?month=${selectedMonth}&year=${selectedYear}`,{withCredentials:true}).then(response=>{
       console.log(response)
       setData(response.data.history);
 
@@ -103,7 +104,7 @@ const Records = (props) => {
   const handleClick= async()=>{
     if(studentRoll.trim().length===0)  return toast.error("please Enter Correct Roll No.")
       props.showLoader();
-      await axios.get(`http://localhost:4000/api/history/get?roll=${studentRoll}`,{withCredentials:true}).then(response=>{
+      await axios.get(`${API}/api/history/get?roll=${studentRoll}`,{withCredentials:true}).then(response=>{
         console.log(response);
         setAllRecordModal(true);
         setSelectedAllDetails(response.data.history);

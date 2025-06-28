@@ -6,6 +6,10 @@ import AddModal from './AddModal/addModal';
 import DeleteModal from './DeleteModal/deleteModal';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+
+const API = import.meta.env.VITE_BACKEND_URL;
+
+
 const Gallery = (props) => {
     const[addModal,setAddModal]=useState(false);
     const[deleteModal,setDeleteModal]=useState(false);
@@ -27,7 +31,7 @@ const Gallery = (props) => {
     }
     const fetchData = async () => {
         props.showLoader();
-        axios.get('http://localhost:4000/api/gallary/get').then((response) => {
+        axios.get(`${API}/api/gallary/get`,{ withCredentials: true }).then((response) => {
             console.log(response);
             setData(response.data.images);
         }).catch(err => {
