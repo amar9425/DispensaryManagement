@@ -53,7 +53,7 @@ const AddModal = (props) => {
         <div>Add Image</div>
 
         <div className='modal-add-btns'>
-          <div className='cancel-modal-btn' onClick={props.onClose()}>Cancel</div>
+          <div className='cancel-modal-btn' onClick={props.onClose}>Cancel</div>
 
           <label htmlFor='fileInput' className='cancel-modal-btn'>
             Upload
