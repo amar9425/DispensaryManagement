@@ -4,9 +4,11 @@ import {toast,ToastContainer} from 'react-toastify'
 import { useNavigate } from 'react-router-dom';
 import axios from'axios';
 
-const API = import.meta.env.VITE_BACKEND_URL;
 
 import ForgotModal from '../../components/ForgotModal/forgotModal';
+
+const API = import.meta.env.VITE_BACKEND_URL;
+
 const Login= (props) => {
 
     const navigate = useNavigate();
