@@ -6,8 +6,8 @@ const nodemailer = require('nodemailer');
 
 const cookieOptions={
     httpOnly: true,
-    secure:false,
-    sameSite: 'Lax'
+    secure:true,
+    sameSite: 'None'
 };
 
 const  transporter = nodemailer.createTransport({
