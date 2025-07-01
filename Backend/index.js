@@ -11,9 +11,9 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-    credentials:true,
-    origin:"https://dispensary-managementfrontend.vercel.app"
     
+    origin:"https://dispensary-managementfrontend.vercel.app",
+    credentials:true
 }));
 
 

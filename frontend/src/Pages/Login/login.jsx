@@ -4,11 +4,17 @@ import {toast,ToastContainer} from 'react-toastify'
 import { useNavigate } from 'react-router-dom';
 import axios from'axios';
 
+<<<<<<< HEAD
 
 import ForgotModal from '../../components/ForgotModal/forgotModal';
 
 const API = import.meta.env.VITE_BACKEND_URL;
 
+=======
+import ForgotModal from '../../components/ForgotModal/forgotModal';
+
+const API = import.meta.env.VITE_BACKEND_URL;
+>>>>>>> 3379b15 (fix: CORS for frontend access)
 const Login= (props) => {
 
     const navigate = useNavigate();
