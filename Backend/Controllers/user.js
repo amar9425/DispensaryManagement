@@ -203,7 +203,7 @@ exports.getStudentByRollNo=async(req,res)=>{
         }
         return res.status(400).json({error:"No Such Student is there"})
 
-    }catch{
+    }catch(err){
         console.log(err)
         res.status(500).json({
             error:"Something Went Wrong",
@@ -247,7 +247,7 @@ exports.registerStudentByStaff= async(req,res)=>{
         });
 
 
-    }catch{
+    }catch(err){
         console.log(err)
         res.status(500).json({
             error:"Something Went Wrong",
@@ -286,7 +286,7 @@ exports.addStaffsByAdmin= async(req,res)=>{
 
 
 
-    }catch{
+    }catch(err){
          console.log(err)
         res.status(500).json({
             error:"Something Went Wrong",
@@ -304,7 +304,7 @@ exports.getAllStaffs=async(req,res)=>{
         })
 
 
-    }catch{
+    }catch(err){
         console.log(err)
         res.status(500).json({
             error:"Something Went Wrong",
@@ -337,7 +337,7 @@ exports.updateStaffById=async(req,res)=>{
 
         }
 
-    }catch{
+    }catch(err){
         console.log(err)
         res.status(500).json({
             error:"Something Went Wrong",
@@ -350,15 +350,15 @@ exports.updateStaffById=async(req,res)=>{
 exports.deleteStaff=async(req,res)=>{
     try{
         const {id}=req.params;
-        const deleteUser=await UserModels.findByIdAndDelete(id);
+        const deletedUser=await UserModels.findByIdAndDelete(id);
 
-        if(deleteduser){
+        if(deletedUser){
             return res.status(200).json({message:"Staff getting Deleted"});
         }
         return res.status(400).json(400).json({error:"No Such Staff is there"})
 
 
-    }catch{
+    }catch(err){
          console.log(err)
         res.status(500).json({
             error:"Something Went Wrong",

@@ -11,6 +11,7 @@ import RecordModal from './RecordModal/recordModal';
 import axios from 'axios';
 import { ToastContainer,toast } from 'react-toastify';
 import StudentAllFiles from './StudentAllDetails/studentAllFiles';
+axios.defaults.withCredentials = true;
 
 const API = import.meta.env.VITE_BACKEND_URL;
 

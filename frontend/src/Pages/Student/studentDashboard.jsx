@@ -19,7 +19,7 @@ const StudentDashboard = (props) => {
     const fetchData =  async()=>{
         props.showLoader();
 
-        await axios.get(`${API}/api/history/get?roll=${userInfo?.roll}`,{withCredentials:true}).then(response=>{
+        await axios.get(`${API}/api/history/get?roll=${userInfo.roll}`,{withCredentials:true}).then(response=>{
             console.log(response);
             setHistory(response.data.history);
         }).catch(err=>{
@@ -32,7 +32,11 @@ const StudentDashboard = (props) => {
     }
 
     useEffect(()=>{
-        fetchData()
+        if (userInfo?.roll){
+            fetchData()
+        }else {
+            toast.error("User not found. Please login again.");
+        }
 
     },[])
 
