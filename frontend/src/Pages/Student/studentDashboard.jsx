@@ -32,7 +32,11 @@ const StudentDashboard = (props) => {
     }
 
     useEffect(()=>{
-        fetchData()
+        if (userInfo?.roll){
+            fetchData()
+        }else {
+            toast.error("User not found. Please login again.");
+        }
 
     },[])
 
