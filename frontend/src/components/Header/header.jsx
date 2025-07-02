@@ -58,7 +58,7 @@ const Header = (props) => {
   const handleLogout = async () => {
     props.showLoader();
     try {
-      await axios.post(
+      await axios.get(
         `${API}/api/auth/logout`,
         {},
         { withCredentials: true } // ✅ Important for sending cookie
