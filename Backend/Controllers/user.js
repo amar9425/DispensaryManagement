@@ -7,7 +7,8 @@ const nodemailer = require('nodemailer');
 const cookieOptions={
     httpOnly: true,
     secure:true,
-    sameSite: 'None'
+    sameSite: 'None',
+    path: '/'
 };
 
 const  transporter = nodemailer.createTransport({
@@ -372,11 +373,7 @@ exports.deleteStaff=async(req,res)=>{
 exports.logout = async (req, res) => {
   console.log("Cookies received:", req.cookies); // 👉 Debug
 
-  res.clearCookie('token', {
-    httpOnly: true,
-    secure:true,
-    sameSite: 'None',
-    path: '/'});
+  res.clearCookie('token',cookieOptions);
   return res.status(200).json({ message: "Logged out successfully" });
 };
 
