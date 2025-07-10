@@ -15,14 +15,21 @@ const AddModal = (props) => {
     const file = e.target.files[0];
     if (!file) return;
 
+     const cloudName = import.meta.env.VITE_CLOUD_NAME;
+     const uploadPreset = import.meta.env.VITE_UPLOAD_PRESET;
+
+    console.log("Cloud Name:", cloudName);
+    console.log("Preset:", uploadPreset);
+
+
     const data = new FormData();
     data.append('file', file);
-    data.append('upload_preset', 'college_dispensary_management_system');
+    data.append('upload_preset', uploadPreset);
 
     setLoader(true);
     try {
       const response = await axios.post(
-        'https://api.cloudinary.com/v1_1/dtvqx0qeb/image/upload',
+        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
         data
       );
 
