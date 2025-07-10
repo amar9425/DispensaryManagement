@@ -372,7 +372,11 @@ exports.deleteStaff=async(req,res)=>{
 exports.logout = async (req, res) => {
   console.log("Cookies received:", req.cookies); // 👉 Debug
 
-  res.clearCookie('token', cookieOptions);
+  res.clearCookie('token', {
+    httpOnly: true,
+    secure:true,
+    sameSite: 'None',
+    path: '/'});
   return res.status(200).json({ message: "Logged out successfully" });
 };
 
