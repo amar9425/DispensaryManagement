@@ -58,11 +58,7 @@ const Header = (props) => {
   const handleLogout = async () => {
     props.showLoader();
     try {
-      await axios.get(
-        `${API}/api/auth/logout`,
-        {},
-        { withCredentials: true } // ✅ Important for sending cookie
-      );
+      await axios.get(`${API}/api/auth/logout`,{ withCredentials: true });
 
       props.handleLogin(false);
       localStorage.removeItem("isLogin");
