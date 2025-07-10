@@ -5,7 +5,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
 const API = import.meta.env.VITE_BACKEND_URL;
-const cloudName = import.meta.env.VITE_CLOUD_NAME;
+
 
 const AddModal = (props) => {
   const [image, setImage] = useState(null);
@@ -15,9 +15,15 @@ const AddModal = (props) => {
     const file = e.target.files[0];
     if (!file) return;
 
+    const uploadPreset = import.meta.env.VITE_UPLOAD_PRESET;
+    const cloudName = import.meta.env.VITE_CLOUD_NAME;
+
+    console.log("📦 Upload preset:", uploadPreset);
+    console.log("🌥️ Cloud name:", cloudName);
+
     const data = new FormData();
     data.append('file', file);
-    data.append('upload_preset', import.meta.env.VITE_UPLOAD_PRESET);
+    data.append('upload_preset', uploadPreset);
 
     setLoader(true);
     try {
