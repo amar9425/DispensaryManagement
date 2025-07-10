@@ -5,6 +5,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
 const API = import.meta.env.VITE_BACKEND_URL;
+const cloudName = import.meta.env.VITE_CLOUD_NAME;
 
 const AddModal = (props) => {
   const [image, setImage] = useState(null);
@@ -16,12 +17,12 @@ const AddModal = (props) => {
 
     const data = new FormData();
     data.append('file', file);
-    data.append('upload_preset', 'college_dispensary_management_system');
+    data.append('upload_preset', import.meta.env.VITE_UPLOAD_PRESET);
 
     setLoader(true);
     try {
       const response = await axios.post(
-        'https://api.cloudinary.com/v1_1/dtvqx0qeb/image/upload',
+        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
         data
       );
 
