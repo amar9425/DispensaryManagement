@@ -98,11 +98,12 @@ const Records = (props) => {
   }, []);
 
   const handleOnOpenModal = (item) => {
-  setSelectedHistory(item); // pehle data set karo
-  setTimeout(() => {
-    setModal(true); // fir modal open karo
-  }, 100); // 100ms delay for safety
-};
+    console.log("👉 Item passed to modal:", item);
+    setSelectedHistory(item); // pehle data set karo
+    setTimeout(() => {
+      setModal(true); // fir modal open karo
+    }, 100); // 100ms delay for safety
+  };
 
 
   const handleClick= async()=>{
