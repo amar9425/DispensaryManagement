@@ -97,10 +97,13 @@ const Records = (props) => {
     setSelectedMonth(pastAndCurrentMonths[pastAndCurrentMonths.length - 1]);
   }, []);
 
-  const handleOnOpenModal =(item)=>{
-    setModal(prev=>!prev)
-    setSelectedHistory(item?item:null);
-  }
+  const handleOnOpenModal = (item) => {
+  setSelectedHistory(item); // pehle data set karo
+  setTimeout(() => {
+    setModal(true); // fir modal open karo
+  }, 100); // 100ms delay for safety
+};
+
 
   const handleClick= async()=>{
     if(studentRoll.trim().length===0)  return toast.error("please Enter Correct Roll No.")
